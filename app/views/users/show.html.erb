@@ -1,0 +1,14 @@
+<table class="profile" summary="Profile information">
+<tr>
+<td class="main">
+<h1>
+<marquee><%= @user.name %></marquee>
+</h1>
+</td>
+<td class="sidebar round">
+<strong>NAME&nbsp;:</strong> <%= @user.name %><br />
+<strong>URL&nbsp;&nbsp;&nbsp;:</strong> <%= link_to user_path(@user), @user %>
+<strong>SCORE:</strong>
+</td>
+</tr>
+</table>
