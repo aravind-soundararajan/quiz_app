@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessible :admin, :email, :name, :password, :password_confirmation
+  has_many :questions , :dependent => :destroy
   validates :name, :presence => true,
                     :length => { :maximum =>50 }
 
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
 
   private
   def encrypt_password
+    self.admin ||= false
     self.salt = make_salt if new_record?
     self.encrypted_password = encrypt(password)
   end

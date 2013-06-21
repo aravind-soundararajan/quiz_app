@@ -12,7 +12,12 @@ class UsersController < ApplicationController
 
   end
   def show
+  	if (self.nil?) 
+  		redirect_to '/'
+  		flash[:error]="You need to be signed in!"
+   	end
   	@user = User.find(params[:id])
+  	@questions = @user.questions
   	@title=@user.name
   end
   def create
@@ -49,7 +54,4 @@ class UsersController < ApplicationController
 			@user = User.find(params[:id])
 			redirect_to(root_path) unless current_user?(@user)
 		end
-
-
-
 end

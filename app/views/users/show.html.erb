@@ -7,8 +7,24 @@
 </td>
 <td class="sidebar round">
 <strong>NAME&nbsp;:</strong> <%= @user.name %><br />
-<strong>URL&nbsp;&nbsp;&nbsp;:</strong> <%= link_to user_path(@user), @user %>
+<%if @user.admin?%>
+<strong>QUESTIONS: <%= @questions.count %></strong>
+<%else%>
 <strong>SCORE:</strong>
+<%end%>
 </td>
 </tr>
 </table>
+<%if @user.admin?%>
+<% if @user.questions.present? %>
+<ol class="microposts">
+<% @questions.each do |question| %>
+<li>
+<%=question.content%>
+</li>
+<% end %>
+<%end%>
+</ol>
+<%else%>
+<% end %>
+

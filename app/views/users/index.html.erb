@@ -1,8 +1,14 @@
 <h1>All users</h1>
 <ul class="users">
 <% @users.each do |user| %>
+<%if !user.admin? %>
 <li>
 <%= link_to user.name, user %>
 </li>
+<% else %>
+<li>
+<%= user.name %>
+</li>
+<%end%>
 <% end %>
 </ul>
