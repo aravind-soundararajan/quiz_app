@@ -7,7 +7,8 @@ QuizApp::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
-  
+  match '/exam', :to => 'users#exam'
+  match '/form', :to => 'users#form'
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'

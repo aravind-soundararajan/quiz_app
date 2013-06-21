@@ -17,8 +17,13 @@ class UsersController < ApplicationController
   		flash[:error]="You need to be signed in!"
    	end
   	@user = User.find(params[:id])
-  	@questions = @user.questions
-  	@title=@user.name
+  	if @user.admin?
+  		@questions = @user.questions
+  		@title=@user.name
+  	else
+  		redirect_to '/exam'
+  	end
+
   end
   def create
 		@user = User.new(params[:user])
@@ -45,6 +50,10 @@ class UsersController < ApplicationController
 			render 'edit'
 		end
   end	
+  def exam
+  	@users=User.all
+  end
+
 
   private
 		def authenticate

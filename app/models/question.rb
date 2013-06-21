@@ -1,9 +1,7 @@
 class Question < ActiveRecord::Base
-  attr_accessible :content ,:user_id ,:answer
+  attr_accessible :answer, :content, :hint, :user_id
   belongs_to :user
-  validates :content, :presence => true, :length => { :maximum => 200 }
   validates :user_id, :presence => true
-  validates :answer => true
-
-  default_scope :order => 'questions.created_at DESC'
+  validates :content,:presence =>true
+  validates :answer, :presence => true
 end
