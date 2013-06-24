@@ -1,0 +1,7 @@
+<h1>Edit Question</h1>
+<%= form_tag( { :action => :edit, }, { :method => :post }) %>
+<div class="field">
+<label>Enter Question ID:</label><br />
+<%=text_field_tag 'quesid', '' %>
+</div>
+<%= submit_tag("Show") %>

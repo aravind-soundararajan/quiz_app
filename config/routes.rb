@@ -1,18 +1,36 @@
 QuizApp::Application.routes.draw do
+  get "questions/new"
+
+  get "questions/create"
+
+  get "question/new"
+
+  get "question/create"
+
+  get "questionnew/create"
+
   get "sessions/new"
 
   resources :users
+  resources :questions
   resources :sessions, :only => [:new,:create,:destroy] 
   
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
-  match '/exam', :to => 'users#exam'
+  match '/exam', :to => 'sessions#exam'
   match '/form', :to => 'users#form'
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+  match 'sessions/ques/', :to => 'sessions#ques'
+  match 'sessions/eval/', :to => 'sessions#eval'
+  match '/addques', :to => 'questions#new'
+  match '/editques', :to => 'questions#edithelp'
+  match '/delques', :to => 'questions#deletehelp'
+  match 'questions/edit', :to => 'questions#edit'
+  match 'questions/delete', :to => 'questions#delete'
+  
   root :to => 'pages#home'
  
   

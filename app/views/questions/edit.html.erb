@@ -1,0 +1,43 @@
+<h1>Add Question</h1>
+<%= form_for(@ques) do |f| %>
+
+<%= render 'shared/other_errors', :object => f.object%>
+
+<div class="field">
+
+<%= f.label :content %><br />
+<%=text_field_tag 'content', @ques.content, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :hint %><br />
+
+<%=text_field_tag 'hint', @ques.hint, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :option1 %><br />
+
+<%=text_field_tag 'option1', @ques.option1, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :option2 %><br />
+<%=text_field_tag 'option2', @ques.option2, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :option3 %><br />
+
+<%=text_field_tag 'option3', @ques.option3, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :option4 %><br />
+
+<%=text_field_tag 'option4', @ques.option4, :size => 75%>
+</div>
+<div class="field">
+<%= f.label :answer %><br />
+
+<%=text_field_tag 'answer', @ques.answer, :size => 75%>
+</div>
+<div class="actions">
+<%= f.submit "Update" %>
+</div>
+<% end %>

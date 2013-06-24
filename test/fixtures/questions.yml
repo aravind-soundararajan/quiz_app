@@ -2,12 +2,20 @@
 
 one:
   content: MyString
-  answer: MyString
   hint: MyString
   user_id: 1
+  answer: MyString
+  option1: MyString
+  option2: MyString
+  option3: MyString
+  option4: MyString
 
 two:
   content: MyString
-  answer: MyString
   hint: MyString
   user_id: 1
+  answer: MyString
+  option1: MyString
+  option2: MyString
+  option3: MyString
+  option4: MyString

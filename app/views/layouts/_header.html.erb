@@ -1,5 +1,6 @@
 <header>
-<%= image_tag("images.jpg", :alt => "Quiz App", :class => "round") %>
+	<div class"img">
+<%= image_tag("images.jpg", :alt => "Quiz App", :class => "round") %></div>
 <nav class="round">
 <ul>
 	<li><%= link_to "Home", root_path %></li>
@@ -7,7 +8,13 @@
 		<li><%= link_to "Users",users_path %></li>
 		<li><%= link_to "Profile", current_user %></li>
 		<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-
+		<% if !current_user.admin? %>
+		<li><%= link_to "Attend Exam", '/exam' %></li>
+		<%else %>
+		<li><%= link_to "Add Question", '/addques'%></li>
+		<li><%= link_to "Edit Question", '/editques'%></li>
+		<li><%= link_to "Delete Question", '/delques'%></li>
+		<% end%>
 	<% end %>
 	<li><%= link_to "Help", help_path %></li>
 	<% if signed_in? %>

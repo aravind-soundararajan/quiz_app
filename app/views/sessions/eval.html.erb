@@ -1,0 +1,13 @@
+<b><u>RESULTS</u></b><br/><br/>
+
+<% params.each do |key, value| %>
+	<% if key.to_i!= 0 %>
+			<%if Question.find(key).answer == value %>
+			<%@score+=1%>
+		<%end%>
+	<%end%>
+<%end%>
+<p>Your score:<%=@score%></p>
+<% if @alls.update_attributes(:user_id=>current_user.id,:mark=>@score) %>
+	<p>Thank you!</p>
+<%end%>

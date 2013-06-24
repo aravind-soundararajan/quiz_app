@@ -1,0 +1,18 @@
+<%= form_tag( { :action => :eval, }, { :method => :post }) %>
+Questions set by:<u><label name="q"><%=@admin.name%>,<%=@email%></label></u>
+<% if @questions.present? %>
+
+<ol class="microposts">
+<% @questions.each do |question| %>
+<li><%=question.content%></li>
+<i><u>Hint:</u></i>&nbsp;&nbsp;<%=question.hint%><br/>
+<div>
+<%= radio_button_tag(question.id, question.option1) %>&nbsp;&nbsp;<%= question.option1 %>
+<%= radio_button_tag(question.id, question.option2) %>&nbsp;&nbsp;<%= question.option2 %><br/>
+<%= radio_button_tag(question.id, question.option3) %>&nbsp;&nbsp;<%= question.option3 %>
+<%= radio_button_tag(question.id, question.option4) %>&nbsp;&nbsp;<%= question.option4 %><br/></div>
+
+<%end%>
+</ol>
+<%= submit_tag("SUBMIT") %>
+<%end%>

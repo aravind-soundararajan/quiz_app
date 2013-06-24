@@ -12,25 +12,24 @@ class UsersController < ApplicationController
 
   end
   def show
-  	if (self.nil?) 
+  	if current_user.nil? 
   		redirect_to '/'
   		flash[:error]="You need to be signed in!"
    	end
   	@user = User.find(params[:id])
-  	if @user.admin?
-  		@questions = @user.questions
-  		@title=@user.name
-  	else
-  		redirect_to '/exam'
-  	end
-
+  	@questions = @user.questions
+  	@title=@user.name
+    @score=Score.find_by_user_id(@user.id).mark
   end
   def create
 		@user = User.new(params[:user])
 		if @user.save
-			sign_in @user
-			flash[:success]="Welcome to Quiz App"
-			redirect_to @user
+      @score=Score.new(:user_id=>@user.id,:mark=>0)
+      if @score .save
+			 sign_in @user
+			 flash[:success]="Welcome to Quiz App"
+			 redirect_to @user
+      end
 		else
 			@title = "Sign up"
 			render 'new'
@@ -50,11 +49,7 @@ class UsersController < ApplicationController
 			render 'edit'
 		end
   end	
-  def exam
-  	@users=User.all
-  end
-
-
+  
   private
 		def authenticate
 			deny_access unless signed_in?
