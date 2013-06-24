@@ -48,8 +48,7 @@ class QuestionsController < ApplicationController
     if params[:quesid].empty?
       flash[:success] = "Invalid ID"
       redirect_to '/delques'
-    end
-    if Question.destroy(params[:quesid])
+        elsif Question.destroy(params[:quesid])
       flash[:success] = "Question updated."
       redirect_to current_user
     else
