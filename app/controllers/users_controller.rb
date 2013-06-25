@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       if @score .save
 			 sign_in @user
 			 flash[:success]="Welcome to Quiz App"
-			 redirect_to @user
+			 redirect_to exam_path
       end
 		else
 			@title = "Sign up"
@@ -41,13 +41,31 @@ class UsersController < ApplicationController
   end
   def update
 		@user = User.find(params[:id])
-		if @user.update_attributes(params[:user])
-			flash[:success] = "Profile updated."
-			redirect_to @user
-		else
-			@title = "Edit user"
-			render 'edit'
-		end
+    if (params[:user][:password].empty?) && (params[:user][:password].empty?)
+      if @user.update_attributes(:name=>params[:user][:name],:email=>params[:user][:email])
+        flash[:success] = "Profile updated."
+        if !@user.admin?
+          redirect_to exam_path
+        else
+          redirect_to editques_path
+        end
+      end
+    elsif !(params[:user][:password].empty?) && !(params[:user][:password].empty?)
+      if @user.update_attributes(params[:user])
+        flash[:success] = "Profile updated."
+          if !@user.admin?
+            redirect_to exam_path
+          else
+            redirect_to editques_path
+          end
+      else
+        @title = "Edit user"
+        render 'edit' 
+      end
+    else
+      @title = "Edit user"
+      render 'edit'
+    end		
   end	
   
   private

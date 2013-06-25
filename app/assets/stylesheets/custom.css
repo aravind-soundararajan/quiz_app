@@ -1,4 +1,4 @@
-.container {
+/*.container {
 width: 710px;
 }
 body {
@@ -10,13 +10,44 @@ padding-top: 20px;
 header img {
 padding: 1em;
 background: #fff;
+}*/
+header {
+padding-top: 20px;
 }
-section {
+
+.round
+{
+	background-color: white
+}
+
+.fsSubmitButton
+{
+	border-top:		2px solid #a3ceda;
+	border-left:		2px solid #a3ceda;
+	border-right:		2px solid #4f6267;
+	border-bottom:		2px solid #4f6267;
+	padding:		10px 20px !important;
+	font-size:		14px !important;
+	background-color:	#c4f1fe;
+	font-weight:		bold;
+	color:			#2d525d;
+}
+.section {
 margin-top: 1em;
 font-size: 120%;
 padding: 20px;
-background: #cff;
 }
+.mypack {
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+background-color: #CCC;
+margin-bottom: 10px;
+padding: 15px 30px;
+margin-right: 10px;
+padding: 15px 30px;
+}
+
 section h1 {
 font-size: 100%;
 }
@@ -58,3 +89,6 @@ div.field, div.actions {
 margin-bottom: 10px;
 }
 
+a {
+	text-decoration: none !important;
+}

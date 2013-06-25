@@ -1,19 +1,20 @@
 <header>
-	<div class"img">
-<%= image_tag("images.jpg", :alt => "Quiz App", :class => "round") %></div>
 <nav class="round">
-<ul>
-	<li><%= link_to "Home", root_path %></li>
+	
+<div class="container">
+<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar-inner">		
+<ul class="nav nav-pills pull-right">
+	<li><% link_to "Home", root_path,:class=>"header_links" %></li>
 	<% if signed_in? %>
-		<li><%= link_to "Users",users_path %></li>
-		<li><%= link_to "Profile", current_user %></li>
-		<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+		<li><% link_to "Profile", current_user,:class=>"header_links" %></li>
+		<li><%= link_to "Settings", edit_user_path(current_user),:class=>"header_links" %></li>
 		<% if !current_user.admin? %>
-		<li><%= link_to "Attend Exam", '/exam' %></li>
+			<li><%= link_to "Attend Exam", '/exam',:class=>"header_links" %></li>
 		<%else %>
-		<li><%= link_to "Add Question", '/addques'%></li>
-		<li><%= link_to "Edit Question", '/editques'%></li>
-		<li><%= link_to "Delete Question", '/delques'%></li>
+			<li><%= link_to "Users",users_path ,:class=>"header_links"%></li>
+			<li><%= link_to "Add Question", '/addques',:class=>"header_links"%></li>
+			<li><%= link_to "Questions", '/editques',:class=>"header_links"%></li>
 		<% end%>
 	<% end %>
 	<li><%= link_to "Help", help_path %></li>
@@ -23,5 +24,17 @@
 		<li><%= link_to "Sign in", signin_path %></li>
 	<% end %>
 </ul>
-</nav>
+</div>
+</div></div>
+</nav><br/><br/><br/>
+<div class="img-rounded">
+<%= image_tag("images.jpg", :alt => "Quiz App", :class => "round") %></div>
 </header>
+<script type="text/javascript">
+// 	jQuery(document).ready(function(){
+// 		jQuery('.header_links').bind('click', function(){
+// 			// jQuery('.header_links').removeClass('active');
+// 			jQuery('.header_links').addClass('active');
+// 		});
+// 	});
+// </script>

@@ -4,23 +4,25 @@
 
 </td>
 <td class="sidebar round">
-<strong>NAME&nbsp;:</strong> <%= @user.name %><br />
+<label class="control-label">NAME:&nbsp;<%= @user.name %></label> 
 <%if @user.admin?%>
-<strong><em>ADMINISTRATOR</em></strong><br/>
-<strong>QUESTIONS: <%= @questions.count %></strong>
+<label class="control-label"><em>ADMINISTRATOR</em></label>
+<label class="control-label">QUESTIONS: <%= @questions.count %></label>
 <%else%>
-<strong>SCORE:&nbsp;</strong><%= @score %>
+<label class="control-label">SCORE:&nbsp;<%= @score %></label>
 <%end%>
 </td>
 </tr>
 </table>
 <%if current_user.admin?%>
 <%if @user.admin?%>
+<ol>
 <% if @user.questions.present? %>
 <% @questions.each do |question| %>
-<%=question.id%>&nbsp;.&nbsp;<%=question.content%><br/>
+<li><i class="icon-thumbs-up icon-black"></i>&nbsp;<%=question.content%></li>
 <% end %>
 <%end%>
+</ol>
 <%end%>
 <%else%>
 <% end %>

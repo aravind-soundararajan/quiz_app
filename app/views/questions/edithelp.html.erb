@@ -1,7 +1,14 @@
-<h1>Edit Question</h1>
-<%= form_tag( { :action => :edit, }, { :method => :post }) %>
-<div class="field">
-<label>Enter Question ID:</label><br />
-<%=text_field_tag 'quesid', '' %>
-</div>
-<%= submit_tag("Show") %>
+<h1>Questions</h1>
+<ol>
+<% if @questions.present? %>
+<% @questions.each do |question| %>
+<div class = 'mypack'>
+	<%=question.content%>&nbsp;&nbsp;
+	<br/>
+	<font size='2'>Posted <%= time_ago_in_words(question.created_at) %> ago.</font>
+	<br/>
+	<%= link_to "EDIT",edit_question_path(question.id), :class => 'btn btn-warning', :style => 'color: #FFF' %>&nbsp;<%= link_to "DELETE",question, :method=>"DELETE",:confirm=>"Are you sure?", :class => 'btn btn-danger', :style => 'color: #FFF' %>
+</div><hr class='round'>
+<% end %>
+<%end%>
+</ol>

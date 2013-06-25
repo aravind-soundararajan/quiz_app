@@ -1,9 +1,9 @@
-<h1>Add Question</h1>
-<%= form_for(@ques) do |f| %>
+<h1>Edit Question</h1>
+<%= form_for(@ques, :method=>'PUT') do |f| %>
 
 <%= render 'shared/other_errors', :object => f.object%>
-
-<div class="field">
+<form class="navbar-form">
+<div class="control-group">
 
 <%= f.label :content %><br />
 <%=text_field_tag 'content', @ques.content, :size => 75%>
@@ -37,7 +37,8 @@
 
 <%=text_field_tag 'answer', @ques.answer, :size => 75%>
 </div>
-<div class="actions">
-<%= f.submit "Update" %>
+<div >
+<%= f.submit "Update" ,:class => 'btn btn-primary',:style=>'margin-bottom:45px;'%>
 </div>
+</form>
 <% end %>

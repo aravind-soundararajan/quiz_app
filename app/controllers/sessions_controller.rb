@@ -12,7 +12,12 @@ class SessionsController < ApplicationController
 		render 'new'
 	else
 		sign_in user
-		redirect_back_or user
+    if !user.admin?
+      redirect_to exam_path 
+    else
+      redirect_to editques_path
+    end
+		#redirect_back_or user
 	end
   end
   def exam

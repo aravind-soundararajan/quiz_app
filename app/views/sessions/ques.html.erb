@@ -1,18 +1,18 @@
 <%= form_tag( { :action => :eval, }, { :method => :post }) %>
-Questions set by:<u><label name="q"><%=@admin.name%>,<%=@email%></label></u>
+<h2 class="legend">Questions set by:<u><label name="q"><%=@admin.name%>,<%=@email%></label></u></h2>
 <% if @questions.present? %>
 
-<ol class="microposts">
+
 <% @questions.each do |question| %>
-<li><%=question.content%></li>
-<i><u>Hint:</u></i>&nbsp;&nbsp;<%=question.hint%><br/>
-<div>
-<%= radio_button_tag(question.id, question.option1) %>&nbsp;&nbsp;<%= question.option1 %>
+<div class='mypack'>
+<%=question.content%><br/>
+<i><u>Hint:</u></i>&nbsp;&nbsp;<%=question.hint%><br/><br/>
+<%= radio_button_tag(question.id, question.option1) %>&nbsp;&nbsp;<%= question.option1 %><br/>
 <%= radio_button_tag(question.id, question.option2) %>&nbsp;&nbsp;<%= question.option2 %><br/>
-<%= radio_button_tag(question.id, question.option3) %>&nbsp;&nbsp;<%= question.option3 %>
-<%= radio_button_tag(question.id, question.option4) %>&nbsp;&nbsp;<%= question.option4 %><br/></div>
+<%= radio_button_tag(question.id, question.option3) %>&nbsp;&nbsp;<%= question.option3 %><br/>
+<%= radio_button_tag(question.id, question.option4) %>&nbsp;&nbsp;<%= question.option4 %><br/><br/></div>
 
 <%end%>
-</ol>
-<%= submit_tag("SUBMIT") %>
+
+<%= submit_tag("SUBMIT", :class=>'btn btn-primary', :style => 'margin-bottom: 45px;') %>
 <%end%>

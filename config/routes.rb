@@ -27,15 +27,16 @@ QuizApp::Application.routes.draw do
   match 'sessions/eval/', :to => 'sessions#eval'
   match '/addques', :to => 'questions#new'
   match '/editques', :to => 'questions#edithelp'
-  match '/delques', :to => 'questions#deletehelp'
-  match 'questions/edit', :to => 'questions#edit'
-  match 'questions/delete', :to => 'questions#delete'
   
+  
+    
   root :to => 'pages#home'
  
   
 
   get "pages/home"
+ 
+ 
 
 #  get "pages/contact"
 

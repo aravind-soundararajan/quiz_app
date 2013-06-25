@@ -1,6 +1,9 @@
-<center><h1>QUIZZERS HOME</h1>
+<div class="hero-unit"><h1 class="text-center">QUIZZERS HOME</h1><br/>
+
 <% if current_user.nil? %>
-<p>This is the home page for the quiz application</p>
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<%= link_to "Sign up now!", signup_path, :class =>"signup_button" %>
+<%else%>
+<h4 style="display:inline"> Welcome <%=current_user.name%>!!</h4><br>
 <%end%>
-</center>
+
+</div>

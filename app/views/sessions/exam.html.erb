@@ -1,14 +1,18 @@
-<h1>Question Sets available</h1>
+<h1 class="legend">Question Sets of following administrators available</h1>
+<span class='body'>
 <%= form_tag( { :action => :ques, }, { :method => :post }) %>
 <ul class="users">
 <% @users.each do |user| %>
 <%if user.admin? %>
-<div class="clearfix">
-<%= radio_button_tag(:email, user.email) %>&nbsp;<%= user.name %><br/></div>
-<% else %>
-<%end%>
+	<% if user.id==1%>
+		<%= radio_button_tag(:email, user.email,true) %>&nbsp;<%= user.name %>
+	<%else%>
+		<%= radio_button_tag(:email, user.email) %>&nbsp;<%= user.name %>
+	<%end%>
 <% end %>
 <br/>
 <br/>
-<%= submit_tag("OK") %>
+<%end%>
+<%= submit_tag("OK",:class => 'btn btn-warning') %>
 </ul>
+</span>

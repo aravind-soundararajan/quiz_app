@@ -1,13 +1,25 @@
-<b><u>RESULTS</u></b><br/><br/>
-
+<h1 class="legend"><b><u>RESULTS</u></b><br/><br/></h1>
+<div class='mypack'>
 <% params.each do |key, value| %>
 	<% if key.to_i!= 0 %>
 			<%if Question.find(key).answer == value %>
-			<%@score+=1%>
+			<%@score+=10%>
 		<%end%>
 	<%end%>
 <%end%>
-<p>Your score:<%=@score%></p>
+<div class="img-rounded"><center>
+	<% if @score>=70%>
+		<%= image_tag("happy.jpeg", :alt => "Quiz App", :class => "round") %>
+	<% elsif @score>=50%>
+		<%= image_tag("confused.jpeg", :alt => "Quiz App", :class => "round") %>
+	<% else %>
+		<%= image_tag("sad.jpeg", :alt => "Quiz App", :class => "round") %>
+	
+	<%end%>
+
+</center></div>
+<p class="text-center"><font color='blue'>Your score:<%=@score%></font><br/><br/>
 <% if @alls.update_attributes(:user_id=>current_user.id,:mark=>@score) %>
-	<p>Thank you!</p>
-<%end%>
+	Thank you!</p>
+	<%end%>
+</div>
